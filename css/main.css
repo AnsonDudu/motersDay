@@ -1,0 +1,43 @@
+*{font-family: "Heiti SC";}
+
+body{
+	max-width: 640px;
+	min-height: 693px;
+	overflow: hidden;
+}
+
+#bg{
+	width: 100%;
+	max-width: 440px;
+	min-height: 736px;
+	background-image: url('../images/02.jpg');
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: center;
+}
+
+#bg p{
+	position: absolute;
+	top: 72%;
+	left: 10%;
+	color: #fff;
+	font-size: 16px;
+	font-weight: bolder;
+	text-shadow: 1px 2px 1px #000;
+}
+
+#word{
+	position: absolute;
+	top: 80%;
+	left: 10%;
+}
+
+#submit{
+	position: absolute;
+	top: 80%;
+	left: 58%;
+}
+
+#draw{
+	overflow: hidden;
+}

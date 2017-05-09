@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>5184母亲节送祝福</title>
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+	<div id="bg">
+		<p>写下对母亲的感激之言，馈赠</p>
+		<input type="text" name="word" id="word" maxlength="20" placeholder="妈妈我爱你" size="20">
+		<input type="submit" value="提交" id="submit">
+
+		<canvas id="draw" width="device-width" height="device-width"></canvas>
+	</div>
+	<script type="text/javascript">
+
+	function motherDraw(word){
+		var can = document.getElementById('draw');
+		var ctx = can.getContext('2d');
+		var img = new Image();
+		img.src = "images/02.jpg";
+		img.onload  = function(){
+				ctx.drawImage(img,-10,5);
+			}
+		// Text style
+		ctx.font = "30pt Heiti";
+		ctx.text = "center";
+		ctx.strokeStyle = "#000";
+		ctx.lineWidth = "3";
+		ctx.fillStyle = "white";
+
+		ctx.fillText(word,can.width-50,100);
+	}
+
+	function textChangeListener (evt) {
+      var id = evt.target.id;
+      var text = evt.target.value;
+      window.word = text;
+      // motherDraw();
+      motherDraw(window.word);
+    }
+
+
+	function openfile(){
+		window.open(document.getElementById('draw').toDataURL());
+	}
+
+	var input =  document.getElementById('word');
+	input.oninput = textChangeListener;
+	console.log(input.value);
+	document.getElementById('submit').addEventListener('click', openfile, false);
+	</script>
+</body>
+</html>
