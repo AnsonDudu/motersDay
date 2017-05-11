@@ -12,7 +12,7 @@
 	<div id="bg">
 		<p>写下对母亲的感激之言，馈赠</p>
 		<input type="text" name="word" id="word" maxlength="12" placeholder="妈我爱你(最多12字)" size="20">
-		<a id="submit" href="javascript:">提交</a>
+		<button id="submit">提交</button>
 		<canvas id="draw" width="440" height="693" style="display: none;"></canvas>
 
 	</div>
@@ -81,7 +81,7 @@
 	// console.log(input.value);
 	// document.getElementById('submit').addEventListener('click', openfile, false);
 	// document.getElementById('submit').addEventListener('touchstart ', openfile, false);
-	$("#submit").on("click",openfile);
+	$("button").on('click touchend',$("#submit"),openfile);
 	</script>
 </body>
 </html>

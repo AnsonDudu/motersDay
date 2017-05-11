@@ -42,6 +42,8 @@ body{
 	text-align: center;
 	text-decoration: none;
 	color: #fff;
+	border:none;
+	border-style: none;
 }
 
 #draw{
