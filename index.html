@@ -67,6 +67,15 @@
 		var canImg = document.getElementById('draw').toDataURL("image/png");
 		var w = window.open('about:blank','image from canvas');
 		w.document.write("<img src='"+canImg+"' alt='from canvas'/>")
+		// saveAsLocalImage ();
+	}
+
+	function saveAsLocalImage () {
+		var myCanvas = document.getElementById("draw");
+		// here is the most important part because if you dont replace you will get a DOM 18 exception.
+		// var image = myCanvas.toDataURL("image/png").replace("image/png", "image/octet-stream;Content-Disposition: attachment;filename=foobar.png");
+		var image = myCanvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+		window.location.href=image; // it will save locally
 	}
 
 	var input =  document.getElementById('word');
