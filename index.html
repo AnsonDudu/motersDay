@@ -11,29 +11,31 @@
 <body>
 	<div id="bg">
 		<p>写下对母亲的感激之言，馈赠</p>
-		<input type="text" name="word" id="word" maxlength="12" placeholder="妈我爱你(最多12字)" size="20">
-		<a id="submit" href="javascript:">提交</a>
-		<canvas id="draw" width="440" height="693" style="display: none;"></canvas>
-
+		<input type="text" name="word" id="word" maxlength="12" autofocus="autofocus" required="required placeholder="妈我爱你(最多12字)" size="20">
+		<button id="submit" disabled="disabled">提交</button>
 	</div>
+	<canvas id="draw" width="440" height="693" class="hide"></canvas>
 	<script type="text/javascript">
 
 	function motherDraw(word){
 		var can = document.getElementById('draw');
 		var ctx = can.getContext('2d');
 		var img = new Image();
+		var img2 = new Image();
+		img2.src = "images/QRcode.jpg"
 		img.src = "images/02.jpg";
 		img.onload  = function(){
 				ctx.drawImage(img,0,0);
+				ctx.drawImage(img2,225,475);
 		// Text style
-		ctx.font = "20px Times New Roman";
+		ctx.font = "22px Times New Roman";
 		// ctx.textAlign = "center";
 		ctx.strokeStyle = "gray";
 		ctx.lineWidth = 1;
-		ctx.fillStyle = "white";
-		ctx.shadowColor = 'rgba(0, 0, 0, 0.3)';
+		ctx.fillStyle = "black";
+		ctx.shadowColor = 'rgba(255, 255, 255, 0.6)';
 		ctx.shadowOffsetX = 2;
-		ctx.shadowOffsetY = 2;
+		ctx.shadowOffsetY = 1;
 			if(word !== null){
 
 				if(word.length > 6){
@@ -48,6 +50,17 @@
 					ctx.fillText(word,25,250);
 					ctx.fillText(word2,25,285);
 				}
+
+				if(word.length >= 4){
+    				$("#submit").removeAttr("disabled");
+    				$("#submit").css('backgroundColor',"#f00");
+    			}
+
+    			if(word.length < 4){
+    				$("#submit").attr("disabled","disabled");
+    				$("#submit").css('backgroundColor',"#ccc");
+    			}
+
 				else{
 					ctx.fillText(word,25,250);
 				}
@@ -64,9 +77,13 @@
     }
 
 
+
 	function openfile(){
-		document.write('succee');
+		$("#bg").addClass("hide");
+		$("#draw").removeClass("hide");
 	}
+
+
 
 	function saveAsLocalImage () {
 		var myCanvas = document.getElementById("draw");
