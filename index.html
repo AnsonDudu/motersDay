@@ -12,9 +12,9 @@
 	<div id="bg">
 		<p>写下对母亲的感激之言，馈赠</p>
 		<input type="text" name="word" id="word" maxlength="12" placeholder="妈我爱你(最多12字)" size="20">
-		<input type="submit" value="提交" id="submit">
-
+		<a id="submit" href="javascript:">提交</a>
 		<canvas id="draw" width="440" height="693" style="display: none;"></canvas>
+
 	</div>
 	<script type="text/javascript">
 
@@ -58,17 +58,14 @@
 	function textChangeListener (evt) {
       var id = evt.target.id;
       var text = evt.target.value;
-      word = text;
+      var word = text;
       // motherDraw();
       motherDraw(word);
     }
 
 
 	function openfile(){
-		window.open(document.getElementById('draw').toDataURL("image/png"));
-		// var w = window.open('about:blank','image from canvas');
-		// w.document.write("<img src='"+canImg+"' alt='from canvas'/>")
-		// saveAsLocalImage ();
+		window.open(document.getElementById('draw').toDataURL());
 	}
 
 	function saveAsLocalImage () {

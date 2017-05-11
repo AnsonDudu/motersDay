@@ -35,7 +35,13 @@ body{
 #submit{
 	position: absolute;
 	top: 80%;
-	left: 58%;
+	left: 60%;
+	width: 50px;
+	height: 25px;
+	background-color: #000000;
+	text-align: center;
+	text-decoration: none;
+	color: #fff;
 }
 
 #draw{
