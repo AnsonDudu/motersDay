@@ -79,9 +79,9 @@
 	var input =  document.getElementById('word');
 	input.oninput = textChangeListener;
 	// console.log(input.value);
-	// document.getElementById('submit').addEventListener('click', openfile, false);
-	// document.getElementById('submit').addEventListener('touchstart ', openfile, false);
-	$("button").on('click touchend',$("#submit"),openfile);
+	document.getElementById('submit').addEventListener('click', openfile, false);
+	document.getElementById('submit').addEventListener('tab', openfile, false);
+
 	</script>
 </body>
 </html>
