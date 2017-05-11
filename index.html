@@ -10,7 +10,7 @@
 <body>
 	<div id="bg">
 		<p>写下对母亲的感激之言，馈赠</p>
-		<input type="text" name="word" id="word" maxlength="12" placeholder="妈妈我爱你(最多12个字)" size="22">
+		<input type="text" name="word" id="word" maxlength="12" placeholder="妈我爱你(最多12字)" size="20">
 		<input type="submit" value="提交" id="submit">
 
 		<canvas id="draw" width="440" height="693" style="display: none;"></canvas>
@@ -64,7 +64,9 @@
 
 
 	function openfile(){
-		window.open(document.getElementById('draw').toDataURL());
+		var canImg = document.getElementById('draw').toDataURL("image/png");
+		var w = window.open('about:blank','image from canvas');
+		w.document.write("<img src='"+canImg+"' alt='from canvas'/>")
 	}
 
 	var input =  document.getElementById('word');
