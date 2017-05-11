@@ -10,10 +10,10 @@
 <body>
 	<div id="bg">
 		<p>写下对母亲的感激之言，馈赠</p>
-		<input type="text" name="word" id="word" maxlength="20" placeholder="妈妈我爱你" size="20">
+		<input type="text" name="word" id="word" maxlength="12" placeholder="妈妈我爱你(最多12个字)" size="22">
 		<input type="submit" value="提交" id="submit">
 
-		<canvas id="draw" width="device-width" height="device-width" style="display: none;"></canvas>
+		<canvas id="draw" width="440" height="693" style="display: none;"></canvas>
 	</div>
 	<script type="text/javascript">
 
@@ -23,24 +23,43 @@
 		var img = new Image();
 		img.src = "images/02.jpg";
 		img.onload  = function(){
-				ctx.drawImage(img,-10,5);
-			}
+				ctx.drawImage(img,0,0);
 		// Text style
-		ctx.font = "30pt Heiti";
-		ctx.text = "center";
-		ctx.strokeStyle = "#000";
-		ctx.lineWidth = "3";
+		ctx.font = "20px Times New Roman";
+		// ctx.textAlign = "center";
+		ctx.strokeStyle = "gray";
+		ctx.lineWidth = 1;
 		ctx.fillStyle = "white";
+		ctx.shadowColor = 'rgba(0, 0, 0, 0.3)';
+		ctx.shadowOffsetX = 2;
+		ctx.shadowOffsetY = 2;
+			if(word !== null){
 
-		ctx.fillText(word,can.width-50,100);
+				if(word.length > 6){
+					var arr = word.split('');
+					var arr2 = [];
+
+					for(i = 6; i < arr.length; i++){
+						arr2.push(arr[i]);
+					}
+					word = arr.slice(0,6).join('');
+					var word2 = arr2.join('');
+					ctx.fillText(word,25,250);
+					ctx.fillText(word2,25,285);
+				}
+				else{
+					ctx.fillText(word,25,250);
+				}
+			}
+		}
 	}
 
 	function textChangeListener (evt) {
       var id = evt.target.id;
       var text = evt.target.value;
-      window.word = text;
+      word = text;
       // motherDraw();
-      motherDraw(window.word);
+      motherDraw(word);
     }
 
 
