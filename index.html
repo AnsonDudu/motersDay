@@ -11,7 +11,7 @@
 <body>
 	<div id="bg">
 		<p>写下对母亲的感激之言，馈赠</p>
-		<input type="text" name="word" id="word" maxlength="12" autofocus="autofocus" required="required placeholder="妈我爱你(最多12字)" size="20">
+		<input type="text" name="word" id="word" maxlength="12" autofocus="autofocus" required="required" placeholder="妈我爱你(4-12字)" size="20">
 		<button id="submit" disabled="disabled">提交</button>
 	</div>
 	<canvas id="draw" width="440" height="693" class="hide"></canvas>
@@ -26,7 +26,7 @@
 		img.src = "images/02.jpg";
 		img.onload  = function(){
 				ctx.drawImage(img,0,0);
-				ctx.drawImage(img2,225,475);
+				ctx.drawImage(img2,250,475);
 		// Text style
 		ctx.font = "22px Times New Roman";
 		// ctx.textAlign = "center";
@@ -76,14 +76,31 @@
       motherDraw(word);
     }
 
+    // Add Class method
+    function hassClass(obj, cls) {
+    	return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+	}
 
-
-	function openfile(){
-		$("#bg").addClass("hide");
-		$("#draw").removeClass("hide");
+	function adddClass(obj, cls) {
+    	if (!this.hassClass(obj, cls)) obj.className += " " + cls;
 	}
 
 
+
+	function openfile(){
+		var canvas = document.getElementById('draw');
+		var img = convertCanvasToImage(canvas);
+		$('body').append(img);
+
+		$("#bg").addClass("hide");
+	}
+
+	function convertCanvasToImage(canvas) {
+		var image = new Image();
+		image.src = canvas.toDataURL("image/png");
+		adddClass(image,"fullWidth");
+		return image;
+	}
 
 	function saveAsLocalImage () {
 		var myCanvas = document.getElementById("draw");
